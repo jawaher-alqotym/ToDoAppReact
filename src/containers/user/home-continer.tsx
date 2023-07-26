@@ -37,15 +37,12 @@ export const Iimages: image[] = [
 function HomeContainer() {
     const { t } = useTranslation();
     const [toggel, setToggel] = useState(false)
-    return (
-        <div className="flex flex-col justify-center items-center pt-[86px] sm:pb-[80px]">
+    return (<>
+        {/* <div className="flex flex-col justify-center items-center pt-[86px] sm:pb-[80px]">
             <h1 className="text-[40px] sm:text-[20px] font-title text-darkBlue pb-[22px]">{t('home.page.your')}</h1>
             <div className="flex gap-[16px] ">
                 <Button color={`${toggel ? 'bg-gradient-to-r from-lightBlue to-darkBlue text-white' : 'bg-whiteColor border border-darkBlue'} `} onClick={() => { setToggel(true) }} text={t('home.page.advertisement')} />
                 <Button color={`${toggel ? 'bg-whiteColor border border-darkBlue' : 'bg-gradient-to-r from-lightBlue to-darkBlue text-white'}`} onClick={() => { setToggel(false) }} text={t('home.page.content')} />
-            </div>
-            <div className="min-w-0 flex-auto">
-                <p className="bg-gradient-to-r from-lightBlue to-darkBlue text-white">{t('hello')}</p>                
             </div>
             <div className=" m-4 grid grid-cols-3 sm:grid-cols-1 gap-[33px] pt-[85px] text-whiteColor font-title text-[32px] cursor-pointer">
                 {
@@ -58,7 +55,26 @@ function HomeContainer() {
                     })
                 }
             </div>
+        </div> */}
+        <div className="h-100 w-full flex items-center justify-center bg-teal-lightest font-sans">
+	<div className="bg-white rounded shadow p-6 m-4 w-full lg:w-3/4 lg:max-w-lg">
+        <div className="mb-4">
+            <h1 className="text-grey-darkest">{t('home.page.to.do.list.title')}</h1>
+            <div className="flex mt-4">
+                <input className="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker"/>
+                <button className="flex-no-shrink p-2 border-2 rounded text-white  hover:bg-darkBlue bg-gradient-to-r from-lightBlue to-darkBlue">{t('home.page.to.do.list.add')}</button>
+            </div>
         </div>
+        <div>
+            <div className="flex mb-4 items-center">
+                <p className="w-full text-grey-darkest">Add another component to Tailwind Components</p>
+                <button className="flex-no-shrink p-2 ml-4 mr-2 border-2 rounded text-white  hover:bg-teal bg-gradient-to-r from-lightBlue to-darkBlue">{t('home.page.to.do.list.check')}</button>
+                <button className="flex-no-shrink p-2 ml-2 border-2 rounded text-red border-red text-white  hover:bg-teal bg-gradient-to-r from-lightBlue to-darkBlue">{t('home.page.to.do.list.delete')}</button>
+            </div>
+        </div>
+    </div>
+</div>
+        </>
     );
 }
 
