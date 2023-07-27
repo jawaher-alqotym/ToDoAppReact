@@ -6,6 +6,14 @@ interface image {
     title: string;
     image: string;
 }
+interface task {
+    id: string;
+    title: string;
+    done: boolean;
+}
+
+export const tasks: task[] = []
+
 export const Iimages: image[] = [
     {
         title: 'home.page.clinics',
@@ -37,6 +45,13 @@ export const Iimages: image[] = [
 function HomeContainer() {
     const { t } = useTranslation();
     const [toggel, setToggel] = useState(false)
+    const [task, setTask] = useState<task>({id: "", title: '', done: false})
+    const [tasks, setTasks] = useState<task[]>([]);
+
+    const removeObjectFromArrayById = (arr: task[], id: string)=> {
+        setTasks( arr.filter(obj => obj.id !== id))
+       
+      };
     return (<>
         {/* <div className="flex flex-col justify-center items-center pt-[86px] sm:pb-[80px]">
             <h1 className="text-[40px] sm:text-[20px] font-title text-darkBlue pb-[22px]">{t('home.page.your')}</h1>
@@ -60,17 +75,30 @@ function HomeContainer() {
 	<div className="bg-white rounded shadow p-6 m-4 w-full lg:w-3/4 lg:max-w-lg">
         <div className="mb-4">
             <h1 className="text-grey-darkest">{t('home.page.to.do.list.title')}</h1>
-            <div className="flex mt-4">
-                <input className="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker"/>
-                <button className="flex-no-shrink p-2 border-2 rounded text-white  hover:bg-darkBlue bg-gradient-to-r from-lightBlue to-darkBlue">{t('home.page.to.do.list.add')}</button>
+            <div className="flex mßt-4">
+                <input className="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker" onChange={(e)=>{
+                    setTask({id: new Date().toString(), title: e.target.value, done: false})
+                   }}/>
+                <button className="flex-no-shrink p-2 border-2 rounded text-white  hover:bg-darkBlue bg-gradient-to-r from-lightBlue to-darkBlue"
+                onClick={()=>{
+                    setTasks(prev => [...prev, task ])
+                    }}>{t('home.page.to.do.list.add')}</button>
             </div>
         </div>
         <div>
-            <div className="flex mb-4 items-center">
-                <p className="w-full text-grey-darkest">Add another component to Tailwind Components</p>
+      { tasks.map((items, index) => {
+           return( <div className="flex mb-4 items-center">
+                <p className="w-full text-grey-darkest">{items.title}</p>
                 <button className="flex-no-shrink p-2 ml-4 mr-2 border-2 rounded text-white  hover:bg-teal bg-gradient-to-r from-lightBlue to-darkBlue">{t('home.page.to.do.list.check')}</button>
-                <button className="flex-no-shrink p-2 ml-2 border-2 rounded text-red border-red text-white  hover:bg-teal bg-gradient-to-r from-lightBlue to-darkBlue">{t('home.page.to.do.list.delete')}</button>
-            </div>
+                <button className="flex-no-shrink p-2 ml-2 border-2 rounded text-red border-red text-white  hover:bg-teal bg-gradient-to-r from-lightBlue to-darkBlue" 
+                onClick={()=>{ 
+                    removeObjectFromArrayById(tasks, items.id)
+                    console.log(tasks)
+                
+                 } }
+                >{t('home.page.to.do.list.delete')}</button>
+            </div> )})}
+        
         </div>
     </div>
 </div>
