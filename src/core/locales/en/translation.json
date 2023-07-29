@@ -13,5 +13,9 @@
 "home.page.stores":"Stores",
 "home.page.other":"Other",
 "home.page.English":"English",
-"hello":"hello"
+"hello":"hello",
+"home.page.to.do.list.title":"TO DO",
+"home.page.to.do.list.add":"Add",
+"home.page.to.do.list.delete":"Delete",
+"home.page.to.do.list.check":"Done"
 }

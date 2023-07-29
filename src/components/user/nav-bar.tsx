@@ -40,7 +40,6 @@ const changeLanguage = () => {
 };
 function NavBar() {
     const [isopen, setisOpen] = useState<Boolean>(false)
-
     const { t } = useTranslation();
     return (
         <div className="container mx-auto flex  justify-center sm:justify-start pt-[85px] sm:pt-0 ">

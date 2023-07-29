@@ -12,5 +12,11 @@
   "home.page.stores":"متاجر",
   "home.page.other":"اخرى",
   "home.page.English":"عربي",
-  "hello":"مرحبا"
+  "hello":"مرحبا",
+  "home.page.to.do.list.title":"قائمة المهام",
+  "home.page.to.do.list.add":"اظف للقائمة",
+  "home.page.to.do.list.delete":"حذف",
+  "home.page.to.do.list.check":"تم"
+
+
 }
