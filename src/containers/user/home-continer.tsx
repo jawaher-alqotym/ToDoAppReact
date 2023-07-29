@@ -2,17 +2,12 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import Button from "src/components/user/button";
 // import { Iimages } from "src/core/statics/home-page-date";
+import ToDoList from "src/components/user/to-do-list"
+
 interface image {
     title: string;
     image: string;
 }
-interface task {
-    id: string;
-    title: string;
-    done: boolean;
-}
-
-export const tasks: task[] = []
 
 export const Iimages: image[] = [
     {
@@ -45,65 +40,29 @@ export const Iimages: image[] = [
 function HomeContainer() {
     const { t } = useTranslation();
     const [toggel, setToggel] = useState(false)
-    const [task, setTask] = useState<task>({id: "", title: '', done: false})
-    const [tasks, setTasks] = useState<task[]>([]);
 
-    const removeObjectFromArrayById = (arr: task[], id: string)=> {
-        setTasks( arr.filter(obj => obj.id !== id))
-       
-      };
-    return (<>
-        {/* <div className="flex flex-col justify-center items-center pt-[86px] sm:pb-[80px]">
-            <h1 className="text-[40px] sm:text-[20px] font-title text-darkBlue pb-[22px]">{t('home.page.your')}</h1>
-            <div className="flex gap-[16px] ">
-                <Button color={`${toggel ? 'bg-gradient-to-r from-lightBlue to-darkBlue text-white' : 'bg-whiteColor border border-darkBlue'} `} onClick={() => { setToggel(true) }} text={t('home.page.advertisement')} />
-                <Button color={`${toggel ? 'bg-whiteColor border border-darkBlue' : 'bg-gradient-to-r from-lightBlue to-darkBlue text-white'}`} onClick={() => { setToggel(false) }} text={t('home.page.content')} />
-            </div>
-            <div className=" m-4 grid grid-cols-3 sm:grid-cols-1 gap-[33px] pt-[85px] text-whiteColor font-title text-[32px] cursor-pointer">
-                {
-                    Iimages.map((items, index) => {
-                        return <div key={index} className={`${items.image} bg-cover bg-no-repeat flex justify-center items-center rounded-lg w-[352px] h-[180px] lg:w-[250px] lg:h-[120px] md:w-[250px] md:h-[120px] sm:w-[250px] sm:h-[120px]`}>
-                            {
-                                t(items.title)
-                            }
-                        </div>
-                    })
-                }
-            </div>
-        </div> */}
-        <div className="h-100 w-full flex items-center justify-center bg-teal-lightest font-sans">
-	<div className="bg-white rounded shadow p-6 m-4 w-full lg:w-3/4 lg:max-w-lg">
-        <div className="mb-4">
-            <h1 className="text-grey-darkest">{t('home.page.to.do.list.title')}</h1>
-            <div className="flex mßt-4">
-                <input className="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker" onChange={(e)=>{
-                    setTask({id: new Date().toString(), title: e.target.value, done: false})
-                   }}/>
-                <button className="flex-no-shrink p-2 border-2 rounded text-white  hover:bg-darkBlue bg-gradient-to-r from-lightBlue to-darkBlue"
-                onClick={()=>{
-                    setTasks(prev => [...prev, task ])
-                    }}>{t('home.page.to.do.list.add')}</button>
-            </div>
-        </div>
-        <div>
-      { tasks.map((items, index) => {
-           return( <div className="flex mb-4 items-center">
-                <p className="w-full text-grey-darkest">{items.title}</p>
-                <button className="flex-no-shrink p-2 ml-4 mr-2 border-2 rounded text-white  hover:bg-teal bg-gradient-to-r from-lightBlue to-darkBlue">{t('home.page.to.do.list.check')}</button>
-                <button className="flex-no-shrink p-2 ml-2 border-2 rounded text-red border-red text-white  hover:bg-teal bg-gradient-to-r from-lightBlue to-darkBlue" 
-                onClick={()=>{ 
-                    removeObjectFromArrayById(tasks, items.id)
-                    console.log(tasks)
-                
-                 } }
-                >{t('home.page.to.do.list.delete')}</button>
-            </div> )})}
-        
-        </div>
-    </div>
-</div>
-        </>
-    );
+    return (
+        //  <div className="flex flex-col justify-center items-center pt-[86px] sm:pb-[80px]">
+        //     <h1 className="text-[40px] sm:text-[20px] font-title text-darkBlue pb-[22px]">{t('home.page.your')}</h1>
+        //     <div className="flex gap-[16px] ">
+        //         <Button color={`${toggel ? 'bg-gradient-to-r from-lightBlue to-darkBlue text-white' : 'bg-whiteColor border border-darkBlue'} `} onClick={() => { setToggel(true) }} text={t('home.page.advertisement')} />
+        //         <Button color={`${toggel ? 'bg-whiteColor border border-darkBlue' : 'bg-gradient-to-r from-lightBlue to-darkBlue text-white'}`} onClick={() => { setToggel(false) }} text={t('home.page.content')} />
+        //     </div>
+        //     <div className=" m-4 grid grid-cols-3 sm:grid-cols-1 gap-[33px] pt-[85px] text-whiteColor font-title text-[32px] cursor-pointer">
+        //         {
+        //             Iimages.map((items, index) => {
+        //                 return <div key={index} className={`${items.image} bg-cover bg-no-repeat flex justify-center items-center rounded-lg w-[352px] h-[180px] lg:w-[250px] lg:h-[120px] md:w-[250px] md:h-[120px] sm:w-[250px] sm:h-[120px]`}>
+        //                     {
+        //                         t(items.title)
+        //                     }
+        //                 </div>
+        //             })
+        //         }
+        //     </div>
+        // </div> 
+         <ToDoList />
+
+    )
 }
 
 export default HomeContainer;
